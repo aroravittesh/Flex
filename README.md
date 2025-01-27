@@ -1,3 +1,29 @@
+Flex - Your Personal Workout Recommendation App
+Flex is your all-in-one fitness companion designed to help you achieve your health and wellness goals. Whether you’re looking to lose weight, build muscle, or maintain a healthy lifestyle, Flex provides personalized workout recommendations, food calorie tracking, and water intake logging to keep you on track.
+
+Features
+🏋️‍♂️ Personalized Workout Recommendations
+Get customized workout plans tailored to your fitness level and goals.
+Choose from various workout types: strength training, cardio, yoga, and more.
+Progress tracking to monitor your improvements over time.
+🍎 Food Calorie Tracker
+Log your meals and snacks to track your daily calorie intake.
+Access a comprehensive database of foods with detailed nutritional information.
+Set calorie goals based on your fitness objectives.
+💧 Water Intake Logger
+Track your daily water consumption to stay hydrated.
+Get reminders to drink water throughout the day based on your body’s needs.
+Visualize your hydration progress with easy-to-read graphs.
+📊 Progress Dashboard
+View your workout history, calorie intake, and hydration logs in one place.
+Stay motivated with weekly and monthly summaries of your progress.
+🔔 Notifications and Reminders
+Get personalized reminders for workouts, meal tracking, and water intake.
+Stay consistent with your routine through timely alerts.
+🔒 Secure Data Storage
+All your data is securely stored in the cloud using Firebase and MongoDB.
+Access your data anytime, anywhere.
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
