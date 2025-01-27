@@ -1,118 +1,239 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+// import React, { useEffect } from 'react';
+// import messaging from '@react-native-firebase/messaging';
+// import Home from './Home'; // Import Home screen directly
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+// const App: React.FC = () => {
+//   useEffect(() => {
+//     // Request user permissions for notifications
+//     const requestUserPermission = async () => {
+//       try {
+//         const authStatus = await messaging().requestPermission();
+//         const enabled =
+//           authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+//           authStatus === messaging.AuthorizationStatus.PROVISIONAL;
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+//         if (enabled) {
+//           console.log('Notification permissions granted:', authStatus);
+//         } else {
+//           console.warn('Notification permissions not granted');
+//         }
+//       } catch (error) {
+//         console.error('Error requesting notification permissions:', error);
+//       }
+//     };
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+//     // Fetch and log the FCM token
+//     const fetchFCMToken = async () => {
+//       try {
+//         const token = await messaging().getToken();
+//         console.log('FCM Token:', token);
+//       } catch (error) {
+//         console.error('Error fetching FCM token:', error);
+//       }
+//     };
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+//     // Handle foreground notifications
+//     const handleForegroundMessages = () => {
+//       const unsubscribe = messaging().onMessage(async (remoteMessage) => {
+//         console.log('Foreground message received:', remoteMessage);
+//       });
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+//       return unsubscribe; // Unsubscribe when component unmounts
+//     };
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+//     const initializeFCM = async () => {
+//       await requestUserPermission();
+//       await fetchFCMToken();
+//       handleForegroundMessages();
+//     };
+
+//     initializeFCM();
+
+//     // Optional: Handle background/quit-state messages (for iOS or Android)
+//     messaging().setBackgroundMessageHandler(async (remoteMessage) => {
+//       console.log('Background message received:', remoteMessage);
+//     });
+//   }, []);
+
+//   // Render Home screen directly
+//   return <Home />;
+// };
+
+// export default App;
+
+// import React, { useState, useEffect } from 'react';
+// import messaging from '@react-native-firebase/messaging';
+// import Name from './Name';
+// import Age from './Age';
+// import Gender from './Gender';
+// import Height from './Height';
+// import Weight from './Weight';
+// import Goal from './Goal';
+// import BodyType from './BodyType';
+// import Equipments from './Equipments';
+// import Home from './Home';
+
+// const App: React.FC = () => {
+//   const [screen, setScreen] = useState<'name' | 'age' | 'gender' | 'height' | 'weight' | 'goal' | 'bodyType' | 'equipments' | 'home'>('name');
+
+//   useEffect(() => {
+//     const requestUserPermission = async () => {
+//       try {
+//         const authStatus = await messaging().requestPermission();
+//         const enabled =
+//           authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+//           authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+//         if (enabled) {
+//           console.log('Notification permissions granted:', authStatus);
+//         } else {
+//           console.warn('Notification permissions not granted');
+//         }
+//       } catch (error) {
+//         console.error('Error requesting notification permissions:', error);
+//       }
+//     };
+
+//     const fetchFCMToken = async () => {
+//       try {
+//         const token = await messaging().getToken();
+//         console.log('FCM Token:', token);
+//       } catch (error) {
+//         console.error('Error fetching FCM token:', error);
+//       }
+//     };
+
+//     const handleForegroundMessages = () => {
+//       const unsubscribe = messaging().onMessage(async (remoteMessage) => {
+//         console.log('Foreground message received:', remoteMessage);
+//       });
+
+//       return unsubscribe;
+//     };
+
+//     const initializeFCM = async () => {
+//       await requestUserPermission();
+//       await fetchFCMToken();
+//       handleForegroundMessages();
+//     };
+
+//     initializeFCM();
+
+//     messaging().setBackgroundMessageHandler(async (remoteMessage) => {
+//       console.log('Background message received:', remoteMessage);
+//     });
+//   }, []);
+
+//   const renderScreen = () => {
+//     switch (screen) {
+//       case 'name':
+//         return <Name onContinue={() => setScreen('age')} />;
+//       case 'age':
+//         return <Age onContinue={() => setScreen('gender')} />;
+//       case 'gender':
+//         return <Gender onContinue={() => setScreen('height')} />;
+//       case 'height':
+//         return <Height onContinue={() => setScreen('weight')} />;
+//       case 'weight':
+//         return <Weight onContinue={() => setScreen('goal')} />;
+//       case 'goal':
+//         return <Goal onContinue={() => setScreen('bodyType')} />;
+//       case 'bodyType':
+//         return <BodyType onContinue={() => setScreen('equipments')} />;
+//       case 'equipments':
+//         return <Equipments onContinue={() => setScreen('home')} />;
+//       case 'home':
+//         return <Home />;
+//       default:
+//         return <Name onContinue={() => setScreen('age')} />;
+//     }
+//   };
+
+//   return <>{renderScreen()}</>;
+// };
+
+// export default App;
+
+import React, { useState, useEffect } from 'react';
+import messaging from '@react-native-firebase/messaging';
+import { FormProvider } from './FormContext'; // Import the FormProvider
+import Name from './Name';
+import Age from './Age';
+import Gender from './Gender';
+import Height from './Height';
+import Weight from './Weight';
+import Goal from './Goal';
+import BodyType from './BodyType';
+import Equipments from './Equipments';
+import Home from './Home';
+
+const App: React.FC = () => {
+  const [currentScreen, setCurrentScreen] = useState<
+    'name' | 'age' | 'gender' | 'height' | 'weight' | 'goal' | 'bodyType' | 'equipments' | 'home'
+  >('name');
+
+  useEffect(() => {
+    const initializeFCM = async () => {
+      try {
+        const authStatus = await messaging().requestPermission();
+        const enabled =
+          authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+          authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+        if (enabled) {
+          console.log('Notification permissions granted:', authStatus);
+        }
+
+        const token = await messaging().getToken();
+        console.log('FCM Token:', token);
+
+        const unsubscribe = messaging().onMessage(async (remoteMessage) => {
+          console.log('Foreground message received:', remoteMessage);
+        });
+
+        return () => unsubscribe();
+      } catch (error) {
+        console.error('Error initializing FCM:', error);
+      }
+    };
+
+    initializeFCM();
+
+    messaging().setBackgroundMessageHandler(async (remoteMessage) => {
+      console.log('Background message received:', remoteMessage);
+    });
+  }, []);
+
+  const renderScreen = () => {
+    switch (currentScreen) {
+      case 'name':
+        return <Name onContinue={() => setCurrentScreen('age')} />;
+      case 'age':
+        return <Age onContinue={() => setCurrentScreen('gender')} />;
+      case 'gender':
+        return <Gender onContinue={() => setCurrentScreen('height')} />;
+      case 'height':
+        return <Height onContinue={() => setCurrentScreen('weight')} />;
+      case 'weight':
+        return <Weight onContinue={() => setCurrentScreen('goal')} />;
+      case 'goal':
+        return <Goal onContinue={() => setCurrentScreen('bodyType')} />;
+      case 'bodyType':
+        return <BodyType onContinue={() => setCurrentScreen('equipments')} />;
+      case 'equipments':
+        return <Equipments onContinue={() => setCurrentScreen('home')} />;
+      case 'home':
+        return <Home />;
+      default:
+        return <Name onContinue={() => setCurrentScreen('age')} />;
+    }
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <FormProvider> {/* Wrap the app in the FormProvider */}
+      {renderScreen()}
+    </FormProvider>
   );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+};
 
 export default App;
