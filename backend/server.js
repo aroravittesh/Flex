@@ -173,7 +173,7 @@ app.use(express.json());
 
 // Connect to MongoDB
 mongoose
-  .connect('mongodb+srv://Udit:Matrix@udit-db.t8hgw.mongodb.net', {
+  .connect('MongoDB_String', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
